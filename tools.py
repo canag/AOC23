@@ -26,7 +26,7 @@ def get_input(day, test=False, year=2023):
     name = dday
     if test:
         name += "_test"
-    f = open(f"data/{dday}.txt", "r")
+    f = open(f"data/{name}.txt", "r")
     lines = f.readlines()
     lines = [l[:-1] for l in lines]
     return lines
