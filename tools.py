@@ -23,10 +23,12 @@ def get_input(day, test=False, year=2023):
     with open(f'data/{dday}_test.txt', 'w') as f:
         f.write(res)
 
-    name = dday
-    if test:
-        name += "_test"
-    f = open(f"data/{name}.txt", "r")
-    lines = f.readlines()
-    lines = [l[:-1] for l in lines]
-    return lines
+    f = open(f"data/{dday}.txt", "r")
+    L = f.readlines()
+    L = [l[:-1] for l in L]
+
+    f = open(f"data/{dday}_test.txt", "r")
+    Ltest = f.readlines()
+    Ltest = [l[:-1] for l in Ltest]
+
+    return L, Ltest
