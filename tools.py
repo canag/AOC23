@@ -9,7 +9,7 @@ def read(day, test=False):
     lines = [l[:-1] for l in lines]
     return lines
 
-def get_input(day, test=False, year=2023):
+def get_input(day, test_nbr=0, part=1, year=2023):
     with open(f"data/keys.txt", "r") as f:
         keys = f.read().splitlines()
         AOC_COOKIE = keys[0]
@@ -17,9 +17,11 @@ def get_input(day, test=False, year=2023):
     s = f'curl --cookie "session={AOC_COOKIE}" https://adventofcode.com/{year}/day/{day}/input > data/{dday}.txt'
     os.system(s)
     
-    s = f'curl https://adventofcode.com/{year}/day/{day}'
+    s = f'curl --cookie "session={AOC_COOKIE}" https://adventofcode.com/{year}/day/{day}'
+    if part==2:
+        s += f'#part2'
     res = os.popen(s).read()
-    res = res.split("<pre><code>")[1].split("</code></pre>")[0]
+    res = res.split("<pre><code>")[test_nbr+1].split("</code></pre>")[0]
     with open(f'data/{dday}_test.txt', 'w') as f:
         f.write(res)
 
