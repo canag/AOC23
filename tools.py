@@ -1,5 +1,6 @@
 import os
 
+
 def read(day, test=False):
     s = str(day).zfill(2)
     if test:
